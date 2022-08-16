@@ -120,7 +120,7 @@ export const getServerSideProps = async ({ query }) => {
       client_secret: process.env.FIGSHARE_CLIENT_SECRET,
       grant_type: 'authorization_code',
       code: query.code,
-      redirect_uri: `http://localhost:3000/figshare/callback`,
+      redirect_uri: `https://auth.fairshareapp.io/figshare/callback`,
     });
 
     const opts = {

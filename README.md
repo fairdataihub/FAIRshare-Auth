@@ -1,4 +1,4 @@
-# [og.fairdataihub.org](https://og.fairdataihub.org)
+# FAIRshare Authentication Service
 
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/fairdataihub/og.fairdataihub.org.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/fairdataihub/og.fairdataihub.org/alerts/)
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/fairdataihub/og.fairdataihub.org.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/fairdataihub/og.fairdataihub.org/context:javascript)
@@ -35,8 +35,6 @@ yarn start
 
 ### How to use
 
-Use the url provided in the `preview` section to refer to the generated thumbnails.
-
 ### Requirements
 
 - Node.js >= 16.14.0
@@ -47,7 +45,7 @@ Use the url provided in the `preview` section to refer to the generated thumbnai
 - [`.github`](.github) — GitHub configuration including the CI workflow.<br>
 - [`.husky`](.husky) — Husky configuration and hooks.<br>
 - [`public`](./public) — Static assets such as robots.txt, images, and favicon.<br>
-- [`pages`](./pages) — Application source code, including pages, components, styles.
+- [`pages`](./src/pages) — Application source code, including pages, components, styles.
 
 ### Scripts
 

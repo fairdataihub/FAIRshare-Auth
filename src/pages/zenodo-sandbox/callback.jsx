@@ -116,11 +116,11 @@ export const getServerSideProps = async ({ query }) => {
 
   if (`code` in query) {
     const body = qs.stringify({
-      client_id: process.env.NEXT_PUBLIC_ZENODO_CLIENT_ID,
-      client_secret: process.env.ZENODO_CLIENT_SECRET,
+      client_id: process.env.NEXT_PUBLIC_ZENODO_SANDBOX_CLIENT_ID,
+      client_secret: process.env.ZENODO_SANDBOX_CLIENT_SECRET,
       grant_type: 'authorization_code',
       code: query.code,
-      redirect_uri: `https://auth.fairshareapp.io/zenodo/callback`,
+      redirect_uri: `https://auth.fairshareapp.io/zenodo-sandbox/callback`,
     });
 
     const opts = {
@@ -131,7 +131,7 @@ export const getServerSideProps = async ({ query }) => {
     };
 
     await axios
-      .post(`https://zenodo.org/oauth/token`, body, opts)
+      .post(`https://sandbox.zenodo.org/oauth/token`, body, opts)
       .then((res) => {
         if (res !== undefined && `data` in res && `access_token` in res.data) {
           accessToken = res.data[`access_token`];
