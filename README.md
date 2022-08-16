@@ -1,12 +1,10 @@
 # FAIRshare Authentication Service
 
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/fairdataihub/og.fairdataihub.org.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/fairdataihub/og.fairdataihub.org/alerts/)
-[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/fairdataihub/og.fairdataihub.org.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/fairdataihub/og.fairdataihub.org/context:javascript)
-[![CodeFactor](https://www.codefactor.io/repository/github/fairdataihub/og.fairdataihub.org/badge)](https://www.codefactor.io/repository/github/fairdataihub/og.fairdataihub.org)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/fairdataihub/FAIRshare-Auth.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/fairdataihub/FAIRshare-Auth/alerts/)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/fairdataihub/FAIRshare-Auth.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/fairdataihub/FAIRshare-Auth/context:javascript)
+[![CodeFactor](https://www.codefactor.io/repository/github/fairdataihub/fairshare-auth/badge)](https://www.codefactor.io/repository/github/fairdataihub/fairshare-auth)
 ![Checkly Status](https://api.checklyhq.com/v1/badges/checks/ead4a1d4-6ca9-48ad-a0dc-6decd8d981bf?style=flat&theme=default)
 ![Checkly Response Time](https://api.checklyhq.com/v1/badges/checks/ead4a1d4-6ca9-48ad-a0dc-6decd8d981bf?style=flat&theme=default&responseTime=true)
-![Checkly API Status](https://api.checklyhq.com/v1/badges/checks/2fda1936-70b1-42d6-a4a7-737865295520?style=flat&theme=default)
-![Checkly API Response Time](https://api.checklyhq.com/v1/badges/checks/2fda1936-70b1-42d6-a4a7-737865295520?style=flat&theme=default&responseTime=true)
 
 ## Project setup
 
