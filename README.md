@@ -3,8 +3,8 @@
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/fairdataihub/FAIRshare-Auth.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/fairdataihub/FAIRshare-Auth/alerts/)
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/fairdataihub/FAIRshare-Auth.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/fairdataihub/FAIRshare-Auth/context:javascript)
 [![CodeFactor](https://www.codefactor.io/repository/github/fairdataihub/fairshare-auth/badge)](https://www.codefactor.io/repository/github/fairdataihub/fairshare-auth)
-![Checkly Status](https://api.checklyhq.com/v1/badges/checks/ead4a1d4-6ca9-48ad-a0dc-6decd8d981bf?style=flat&theme=default)
-![Checkly Response Time](https://api.checklyhq.com/v1/badges/checks/ead4a1d4-6ca9-48ad-a0dc-6decd8d981bf?style=flat&theme=default&responseTime=true)
+![Checkly Status](https://api.checklyhq.com/v1/badges/checks/938427be-1b3d-4519-a5a4-3ad3c94fea3d?style=flat&theme=default)
+![Checkly Response Time](https://api.checklyhq.com/v1/badges/checks/938427be-1b3d-4519-a5a4-3ad3c94fea3d?style=flat&theme=default&responseTime=true)
 
 ## Project setup
 
