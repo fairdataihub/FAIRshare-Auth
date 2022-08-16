@@ -16,13 +16,13 @@ export default function Index() {
           FAIRshare Authentication platform
         </h1>
 
-        <div className="my-5 flex space-x-2">
-          <Link href="/github-oauth">
+        <div className="my-5 flex hidden space-x-2">
+          <Link href="/github">
             <a className="rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700">
               GitHub OAuth
             </a>
           </Link>
-          <Link href="/zenodo-oauth">
+          <Link href="/zenodo">
             <a className="rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700">
               Zenodo OAuth
             </a>

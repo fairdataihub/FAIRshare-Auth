@@ -6,13 +6,13 @@ import LottieAnimation from '@/components/lotties';
 import heroLottie from '~/lotties/connecting.json';
 
 export default function GitHubOAuth() {
-  // const redirectURI = encodeURIComponent(
-  //   `http://localhost:3000/figshare/callback`,
-  // );
+  const redirectURI = encodeURIComponent(`https://oauthdebugger.com/debug`);
   const tokenScope = encodeURIComponent(`all`);
   const responseType = encodeURIComponent(`code`);
 
-  const FIGSHARE_OAUTH_URL = `https://figshare.com/account/applications/authorize?client_id=${process.env.NEXT_PUBLIC_FIGSHARE_CLIENT_ID}&scope=${tokenScope}&response_type=${responseType}`;
+  const FIGSHARE_OAUTH_URL = `https://figshare.com/account/applications/authorize?client_id=${process.env.NEXT_PUBLIC_FIGSHARE_CLIENT_ID}&scope=${tokenScope}&redirect_uri=${redirectURI}&response_type=${responseType}`;
+
+  console.log(FIGSHARE_OAUTH_URL);
 
   useEffect(() => {
     // redirect to github oauth
