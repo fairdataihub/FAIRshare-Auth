@@ -5,15 +5,19 @@ import LottieAnimation from '@/components/lotties';
 
 import heroLottie from '~/lotties/connecting.json';
 
-export default function GitHubOAuth() {
+export default function GitHubOAuth({ session }) {
   const GITHUB_OAUTH_URL = `https://github.com/login/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID}&scope=repo%20admin:repo_hook%20admin:org_hook%20user`;
 
   useEffect(() => {
-    // redirect to github oauth
+    if (session) {
+      sessionStorage.setItem('github-session', session);
+    }
+
+    // redirect to github oauth workflow
     setTimeout(() => {
       window.location.href = GITHUB_OAUTH_URL;
     }, 2000);
-  }, [GITHUB_OAUTH_URL]);
+  }, [GITHUB_OAUTH_URL, session]);
 
   return (
     <div className="flex h-screen flex-col justify-between">
@@ -38,3 +42,17 @@ export default function GitHubOAuth() {
     </div>
   );
 }
+
+export const getServerSideProps = async ({ query }) => {
+  let session = '';
+
+  if (`session` in query) {
+    session = query.session;
+  }
+
+  return {
+    props: {
+      session,
+    },
+  };
+};

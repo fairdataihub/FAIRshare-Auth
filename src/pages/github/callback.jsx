@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Head from 'next/head';
 import Link from 'next/link';
-// import { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 
 import LottieAnimation from '@/components/lotties';
@@ -9,17 +9,18 @@ import LottieAnimation from '@/components/lotties';
 import heroLottie from '~/lotties/invalidCode.json';
 
 export default function GitHubOAuthCallback({ GitHubToken }) {
-  // const router = useRouter();
+  const router = useRouter();
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(GitHubToken);
   };
 
   useEffect(() => {
-    /**
-     * TODO: come back to this one
-     */
-    // router.push('fairshare://githuboauth');
+    const session_id = sessionStorage.getItem('github-session');
+
+    router.push(
+      `fairshare://github-auth?session=${session_id}&token=${GitHubToken}`,
+    );
   });
 
   return (
