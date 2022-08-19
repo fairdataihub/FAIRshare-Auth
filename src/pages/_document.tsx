@@ -16,13 +16,6 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <script
-            async
-            defer
-            data-website-id="0ec60d06-60fd-4204-a81b-548c2107254e"
-            src="https://umami.fairdataihub.org/mushroom.js"
-          />
-
           <meta name="language" content="English" />
           <meta name="author" content="Fair Data Innovations Hub" />
 
