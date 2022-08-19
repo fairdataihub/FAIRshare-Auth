@@ -2,7 +2,7 @@ import axios from 'axios';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-// import { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import qs from 'qs';
 import React, { useEffect } from 'react';
 
@@ -20,19 +20,19 @@ const FigshareOAuthCallback: React.FC<PageProps> = ({
   accessToken,
   refreshToken,
 }) => {
-  // const router = useRouter();
+  const router = useRouter();
 
   useEffect(() => {
-    // const session_id = sessionStorage.getItem('figshare-session');
+    const session_id = sessionStorage.getItem('figshare-session');
 
     // remove session from storage - makes the session one time use only.
     sessionStorage.removeItem('figshare-session');
 
     if (accessToken != `error` && refreshToken != `error`) {
       // send the link to fairshare to authenticate the user
-      // router.push(
-      //   `fairshare://auth-figshare?session=${session_id}&token=${accessToken}&refreshToken=${refreshToken}`,
-      // );
+      router.push(
+        `fairshare://auth-figshare?session=${session_id}&token=${accessToken}&refreshToken=${refreshToken}`,
+      );
     }
   });
 
