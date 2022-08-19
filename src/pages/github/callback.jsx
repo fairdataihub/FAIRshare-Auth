@@ -18,8 +18,11 @@ export default function GitHubOAuthCallback({ GitHubToken }) {
   useEffect(() => {
     const session_id = sessionStorage.getItem('github-session');
 
+    // remove session from storage - makes the session one time use only.
+    sessionStorage.removeItem('github-session');
+
     router.push(
-      `fairshare://github-auth?session=${session_id}&token=${GitHubToken}`,
+      `fairshare://auth-github?session=${session_id}&token=${GitHubToken}`,
     );
   });
 
