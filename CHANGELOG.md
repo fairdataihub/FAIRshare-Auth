@@ -1,14 +1,12 @@
 # [1.2.0](https://github.com/fairdataihub/FAIRshare-Auth/compare/v1.1.0...v1.2.0) (2022-08-19)
 
-
 ### Bug Fixes
 
-* 🐛 move click function to container ([4880393](https://github.com/fairdataihub/FAIRshare-Auth/commit/4880393cee783af7578b25891a807288631218bf))
-
+- 🐛 move click function to container ([4880393](https://github.com/fairdataihub/FAIRshare-Auth/commit/4880393cee783af7578b25891a807288631218bf))
 
 ### Features
 
-* ✨ add toasts and refactor token view component ([62647cc](https://github.com/fairdataihub/FAIRshare-Auth/commit/62647cc8706839672162e12aaf65fc88b2f52831))
+- ✨ add toasts and refactor token view component ([62647cc](https://github.com/fairdataihub/FAIRshare-Auth/commit/62647cc8706839672162e12aaf65fc88b2f52831))
 
 # [1.1.0](https://github.com/fairdataihub/FAIRshare-Auth/compare/v1.0.1...v1.1.0) (2022-08-19)
 
