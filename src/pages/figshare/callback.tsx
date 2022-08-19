@@ -137,11 +137,6 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     refreshToken = `error`;
   }
 
-  accessToken =
-    'af2e71c6e749eced15ee49d880cffa687efb8be99aaf7254fff826ca933a346e4c06e9a7e99d85ed7a4f783939a6f9befda21a00b196013aa6c2256645341ea6';
-  refreshToken =
-    '9153f5cad9bc77367699676cb34aeb3adfc2f6748ae9b15899149c57ded8e5bbbf09cb531617bb15542d55c9d3678a388db8df276544e9aa799046d2ae4b5d85';
-
   return {
     props: {
       accessToken,
