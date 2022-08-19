@@ -2,11 +2,12 @@ import axios from 'axios';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 import qs from 'qs';
 import React, { useEffect } from 'react';
 
 import LottieAnimation from '@/components/lotties';
+import TokenView from '@/components/TokenView';
 
 import heroLottie from '~/lotties/invalidCode.json';
 
@@ -19,23 +20,19 @@ const FigshareOAuthCallback: React.FC<PageProps> = ({
   accessToken,
   refreshToken,
 }) => {
-  const router = useRouter();
-
-  const copyToClipboard = (token: string) => {
-    navigator.clipboard.writeText(token);
-  };
+  // const router = useRouter();
 
   useEffect(() => {
-    const session_id = sessionStorage.getItem('figshare-session');
+    // const session_id = sessionStorage.getItem('figshare-session');
 
     // remove session from storage - makes the session one time use only.
     sessionStorage.removeItem('figshare-session');
 
     if (accessToken != `error` && refreshToken != `error`) {
       // send the link to fairshare to authenticate the user
-      router.push(
-        `fairshare://auth-figshare?session=${session_id}&token=${accessToken}&refreshToken=${refreshToken}`,
-      );
+      // router.push(
+      //   `fairshare://auth-figshare?session=${session_id}&token=${accessToken}&refreshToken=${refreshToken}`,
+      // );
     }
   });
 
@@ -50,67 +47,21 @@ const FigshareOAuthCallback: React.FC<PageProps> = ({
       <main className="flex flex-1 flex-col items-center justify-center">
         {accessToken != `error` && refreshToken != `error` ? (
           <>
-            <h1 className="my-2 text-3xl font-medium">
+            <h1 className="my-2 text-center text-3xl font-medium">
               Successfully authenticated with Figshare!
             </h1>
 
-            <p className="text-center text-lg">
+            <p className="mb-8 text-center text-lg">
               We will try to open your FAIRshare application and paste the
               following details in automatically. <br /> Click &apos;Open&apos;
               if you are asked to do so.
             </p>
 
-            <div className="mt-12 mb-4 flex flex-row items-center space-x-4">
-              <span className="text-base font-medium"> Access Token: </span>
+            <TokenView label="Access Token" token={accessToken} />
 
-              <div className="flex flex-row rounded-lg bg-slate-100 px-3 py-2">
-                <p>{accessToken}</p>
-                <div className="ml-3">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 rounded-md hover:cursor-pointer hover:bg-slate-300 active:translate-y-1 "
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                    onClick={() => copyToClipboard(accessToken)}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
-                    />
-                  </svg>
-                </div>
-              </div>
-            </div>
+            <TokenView label="Refresh Token" token={refreshToken} />
 
-            <div className="mt-4 mb-12 flex flex-row items-center space-x-4">
-              <span className="text-base font-medium"> Refresh Token: </span>
-
-              <div className="flex flex-row rounded-lg bg-slate-100 px-3 py-2">
-                <p>{refreshToken}</p>
-                <div className="ml-3">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 rounded-md hover:cursor-pointer hover:bg-slate-300 active:translate-y-1 "
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                    onClick={() => copyToClipboard(refreshToken)}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
-                    />
-                  </svg>
-                </div>
-              </div>
-            </div>
-
-            <p className="text-base text-slate-600">
+            <p className="mt-8 text-base text-slate-600">
               You can copy and paste the following tokens manually if we are
               unable to open your application.
             </p>
@@ -185,6 +136,11 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     accessToken = `error`;
     refreshToken = `error`;
   }
+
+  accessToken =
+    'af2e71c6e749eced15ee49d880cffa687efb8be99aaf7254fff826ca933a346e4c06e9a7e99d85ed7a4f783939a6f9befda21a00b196013aa6c2256645341ea6';
+  refreshToken =
+    '9153f5cad9bc77367699676cb34aeb3adfc2f6748ae9b15899149c57ded8e5bbbf09cb531617bb15542d55c9d3678a388db8df276544e9aa799046d2ae4b5d85';
 
   return {
     props: {
