@@ -1,3 +1,16 @@
+# [1.1.0](https://github.com/fairdataihub/FAIRshare-Auth/compare/v1.0.1...v1.1.0) (2022-08-19)
+
+
+### Bug Fixes
+
+* 🐛 remove umami ([236931d](https://github.com/fairdataihub/FAIRshare-Auth/commit/236931df8ca51662775fc76e658e79e15b858ce1))
+* 🐛 zenodo retry route link ([93733bc](https://github.com/fairdataihub/FAIRshare-Auth/commit/93733bcb0667a16268ac2e395d5e88dd52d9227d))
+
+
+### Features
+
+* ✨ add error checks and add labels ([e735383](https://github.com/fairdataihub/FAIRshare-Auth/commit/e735383416308db3c218405c79d0652e4eae5083))
+
 ## [1.0.1](https://github.com/fairdataihub/FAIRshare-Auth/compare/v1.0.0...v1.0.1) (2022-08-19)
 
 ### Bug Fixes
