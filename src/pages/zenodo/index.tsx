@@ -21,7 +21,7 @@ const ZenodoOAuth: React.FC<PageProps> = ({ session }) => {
 
   useEffect(() => {
     if (session) {
-      sessionStorage.setItem('github-session', session);
+      sessionStorage.setItem('zenodo-session', session);
     }
 
     // redirect to zenodo oauth

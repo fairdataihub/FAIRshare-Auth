@@ -28,6 +28,7 @@
   },
   "homepage": "https://auth.fairshareapp.io",
   "dependencies": {
+    "@types/qs": "^6.9.7",
     "axios": "0.27.2",
     "next": "latest",
     "qs": "6.11.0",

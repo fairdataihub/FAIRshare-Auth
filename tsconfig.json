@@ -20,14 +20,7 @@
     },
     "incremental": true
   },
-  "include": [
-    "next-env.d.ts",
-    "amp.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "src/pages/github/github-oauth-callback.jsx",
-    "src/pages/figshare/callback.jsx"
-  ],
+  "include": ["next-env.d.ts", "amp.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"],
   "moduleResolution": ["node_modules", ".next", "node"]
 }

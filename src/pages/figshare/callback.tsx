@@ -1,32 +1,46 @@
 import axios from 'axios';
+import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import qs from 'qs';
-// import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 
 import LottieAnimation from '@/components/lotties';
 
 import heroLottie from '~/lotties/invalidCode.json';
 
-export default function ZenodoOAuthCallback({ accessToken, refreshToken }) {
-  // const router = useRouter();
+interface PageProps {
+  accessToken: string;
+  refreshToken: string;
+}
 
-  const copyToClipboard = (token) => {
+const FigshareOAuthCallback: React.FC<PageProps> = ({
+  accessToken,
+  refreshToken,
+}) => {
+  const router = useRouter();
+
+  const copyToClipboard = (token: string) => {
     navigator.clipboard.writeText(token);
   };
 
   useEffect(() => {
-    /**
-     * TODO: come back to this one
-     */
-    // router.push('fairshare://githuboauth');
+    const session_id = sessionStorage.getItem('figshare-session');
+
+    // remove session from storage - makes the session one time use only.
+    sessionStorage.removeItem('figshare-session');
+
+    // send the link to fairshare to authenticate the user
+    router.push(
+      `fairshare://auth-figshare?session=${session_id}&token=${accessToken}&refreshToken=${refreshToken}`,
+    );
   });
 
   return (
     <div className="flex h-screen flex-col justify-between">
       <Head>
-        <title>Zenodo | FAIRshare Authentication platform</title>
+        <title>Figshare | FAIRshare Authentication platform</title>
         <meta name="description" content="FAIRshare Authentication platform" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -35,7 +49,7 @@ export default function ZenodoOAuthCallback({ accessToken, refreshToken }) {
         {accessToken != `error` ? (
           <>
             <h1 className="my-2 text-3xl font-medium">
-              Successfully authenticated with Zenodo!
+              Successfully authenticated with Figshare!
             </h1>
             <p className="text-lg">
               Copy and paste the following code into FAIRshare
@@ -97,7 +111,7 @@ export default function ZenodoOAuthCallback({ accessToken, refreshToken }) {
                 Something went wrong!
               </h1>
 
-              <Link href="/zenodo-oauth">
+              <Link href="/figshare">
                 <span className="cursor-pointer text-blue-600 underline visited:text-purple-600 hover:text-blue-800">
                   Try authentication again
                 </span>
@@ -108,19 +122,19 @@ export default function ZenodoOAuthCallback({ accessToken, refreshToken }) {
       </main>
     </div>
   );
-}
+};
 
-export const getServerSideProps = async ({ query }) => {
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   let accessToken;
   let refreshToken;
 
   if (`code` in query) {
     const body = qs.stringify({
-      client_id: process.env.NEXT_PUBLIC_ZENODO_SANDBOX_CLIENT_ID,
-      client_secret: process.env.ZENODO_SANDBOX_CLIENT_SECRET,
+      client_id: process.env.NEXT_PUBLIC_FIGSHARE_CLIENT_ID,
+      client_secret: process.env.FIGSHARE_CLIENT_SECRET,
       grant_type: 'authorization_code',
       code: query.code,
-      redirect_uri: `https://auth.fairshareapp.io/zenodo-sandbox/callback`,
+      redirect_uri: `https://auth.fairshareapp.io/figshare/callback`,
     });
 
     const opts = {
@@ -131,7 +145,7 @@ export const getServerSideProps = async ({ query }) => {
     };
 
     await axios
-      .post(`https://sandbox.zenodo.org/oauth/token`, body, opts)
+      .post(`https://api.figshare.com/v2/token`, body, opts)
       .then((res) => {
         if (res !== undefined && `data` in res && `access_token` in res.data) {
           accessToken = res.data[`access_token`];
@@ -160,3 +174,5 @@ export const getServerSideProps = async ({ query }) => {
     },
   };
 };
+
+export default FigshareOAuthCallback;

@@ -21,7 +21,7 @@ const FigshareOAuth: React.FC<PageProps> = ({ session }) => {
 
   useEffect(() => {
     if (session) {
-      sessionStorage.setItem('github-session', session);
+      sessionStorage.setItem('figshare-session', session);
     }
 
     // redirect to figshare oauth

@@ -1,51 +1,62 @@
 import axios from 'axios';
+import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import qs from 'qs';
 import React, { useEffect } from 'react';
 
 import LottieAnimation from '@/components/lotties';
 
 import heroLottie from '~/lotties/invalidCode.json';
 
-export default function GitHubOAuthCallback({ GitHubToken }) {
+interface PageProps {
+  accessToken: string;
+  refreshToken: string;
+}
+
+const ZenodoOAuthCallback: React.FC<PageProps> = ({
+  accessToken,
+  refreshToken,
+}) => {
   const router = useRouter();
 
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(GitHubToken);
+  const copyToClipboard = (token: string) => {
+    navigator.clipboard.writeText(token);
   };
 
   useEffect(() => {
-    const session_id = sessionStorage.getItem('github-session');
+    const session_id = sessionStorage.getItem('zenodo-session');
 
     // remove session from storage - makes the session one time use only.
-    sessionStorage.removeItem('github-session');
+    sessionStorage.removeItem('zenodo-session');
 
     // send the link to fairshare to authenticate the user
     router.push(
-      `fairshare://auth-github?session=${session_id}&token=${GitHubToken}`,
+      `fairshare://auth-zenodo?session=${session_id}&token=${accessToken}&refreshToken=${refreshToken}`,
     );
   });
 
   return (
     <div className="flex h-screen flex-col justify-between">
       <Head>
-        <title>Github | FAIRshare Authentication platform</title>
+        <title>Zenodo | FAIRshare Authentication platform</title>
         <meta name="description" content="FAIRshare Authentication platform" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className="flex flex-1 flex-col items-center justify-center">
-        {GitHubToken != `error` ? (
+        {accessToken != `error` ? (
           <>
             <h1 className="my-2 text-3xl font-medium">
-              Successfully authenticated with GitHub!
+              Successfully authenticated with Zenodo!
             </h1>
             <p className="text-lg">
               Copy and paste the following code into FAIRshare
             </p>
             <div className=" my-4 flex flex-row rounded-lg bg-slate-100 px-3 py-2">
-              <p>{GitHubToken}</p>
+              <p>{accessToken}</p>
+
               <div className="ml-3">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +65,27 @@ export default function GitHubOAuthCallback({ GitHubToken }) {
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                   strokeWidth={2}
-                  onClick={copyToClipboard}
+                  onClick={() => copyToClipboard(accessToken)}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div className=" my-4 flex flex-row rounded-lg bg-slate-100 px-3 py-2">
+              <p>{refreshToken}</p>
+              <div className="ml-3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 rounded-md hover:cursor-pointer hover:bg-slate-300 active:translate-y-1 "
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  onClick={() => copyToClipboard(refreshToken)}
                 >
                   <path
                     strokeLinecap="round"
@@ -80,7 +111,7 @@ export default function GitHubOAuthCallback({ GitHubToken }) {
                 Something went wrong!
               </h1>
 
-              <Link href="/github-oauth">
+              <Link href="/zenodo-oauth">
                 <span className="cursor-pointer text-blue-600 underline visited:text-purple-600 hover:text-blue-800">
                   Try authentication again
                 </span>
@@ -91,36 +122,57 @@ export default function GitHubOAuthCallback({ GitHubToken }) {
       </main>
     </div>
   );
-}
+};
 
-export const getServerSideProps = async ({ query }) => {
-  let GitHubToken;
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  let accessToken;
+  let refreshToken;
+
   if (`code` in query) {
-    const body = {
-      client_id: process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID,
-      client_secret: process.env.GITHUB_CLIENT_SECRET,
+    const body = qs.stringify({
+      client_id: process.env.NEXT_PUBLIC_ZENODO_CLIENT_ID,
+      client_secret: process.env.ZENODO_CLIENT_SECRET,
+      grant_type: 'authorization_code',
       code: query.code,
+      redirect_uri: `https://auth.fairshareapp.io/zenodo/callback`,
+    });
+
+    const opts = {
+      headers: {
+        accept: `application/json`,
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
     };
 
-    const opts = { headers: { accept: `application/json` } };
-
-    GitHubToken = await axios
-      .post(`https://github.com/login/oauth/access_token`, body, opts)
+    await axios
+      .post(`https://zenodo.org/oauth/token`, body, opts)
       .then((res) => {
         if (res !== undefined && `data` in res && `access_token` in res.data) {
-          return res.data[`access_token`];
+          accessToken = res.data[`access_token`];
+          refreshToken = res.data[`refresh_token`];
+          return;
         } else {
-          return `error`;
+          accessToken = `error`;
+          refreshToken = `error`;
+          return;
         }
       })
-      .catch((_err) => `error`);
+      .catch((_err) => {
+        accessToken = `error`;
+        refreshToken = `error`;
+        return `error`;
+      });
   } else {
-    GitHubToken = `error`;
+    accessToken = `error`;
+    refreshToken = `error`;
   }
 
   return {
     props: {
-      GitHubToken,
+      accessToken,
+      refreshToken,
     },
   };
 };
+
+export default ZenodoOAuthCallback;
