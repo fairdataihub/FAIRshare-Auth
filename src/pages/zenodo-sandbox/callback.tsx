@@ -130,7 +130,7 @@ const ZenodoSandboxOAuthCallback: React.FC<PageProps> = ({
                 Something went wrong!
               </h1>
 
-              <Link href="/zenodo-oauth">
+              <Link href="/zenodo-sandbox">
                 <span className="cursor-pointer text-blue-600 underline visited:text-purple-600 hover:text-blue-800">
                   Try authentication again
                 </span>
