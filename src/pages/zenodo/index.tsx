@@ -1,3 +1,4 @@
+import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import React, { useEffect } from 'react';
 
@@ -5,7 +6,11 @@ import LottieAnimation from '@/components/lotties';
 
 import heroLottie from '~/lotties/connecting.json';
 
-export default function GitHubOAuth() {
+interface PageProps {
+  session: string | undefined;
+}
+
+const ZenodoOAuth: React.FC<PageProps> = ({ session }) => {
   const redirectURI = encodeURIComponent(
     `https://auth.fairshareapp.io/zenodo/callback`,
   );
@@ -15,11 +20,15 @@ export default function GitHubOAuth() {
   const ZENODO_OAUTH_URL = `https://zenodo.org/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_ZENODO_CLIENT_ID}&scope=${tokenScope}&redirect_uri=${redirectURI}&response_type=${responseType}`;
 
   useEffect(() => {
-    // redirect to github oauth
+    if (session) {
+      sessionStorage.setItem('github-session', session);
+    }
+
+    // redirect to zenodo oauth
     setTimeout(() => {
       window.location.href = ZENODO_OAUTH_URL;
     }, 2000);
-  }, [ZENODO_OAUTH_URL]);
+  }, [ZENODO_OAUTH_URL, session]);
 
   return (
     <div className="flex h-screen flex-col justify-between">
@@ -43,4 +52,20 @@ export default function GitHubOAuth() {
       </main>
     </div>
   );
-}
+};
+
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  let session: string | string[] | undefined = '';
+
+  if (`session` in query) {
+    session = query.session;
+  }
+
+  return {
+    props: {
+      session,
+    },
+  };
+};
+
+export default ZenodoOAuth;

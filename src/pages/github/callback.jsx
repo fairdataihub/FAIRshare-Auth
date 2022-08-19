@@ -21,6 +21,7 @@ export default function GitHubOAuthCallback({ GitHubToken }) {
     // remove session from storage - makes the session one time use only.
     sessionStorage.removeItem('github-session');
 
+    // send the link to fairshare to authenticate the user
     router.push(
       `fairshare://auth-github?session=${session_id}&token=${GitHubToken}`,
     );
@@ -108,7 +109,6 @@ export const getServerSideProps = async ({ query }) => {
       .then((res) => {
         if (res !== undefined && `data` in res && `access_token` in res.data) {
           return res.data[`access_token`];
-          // return `error`;
         } else {
           return `error`;
         }

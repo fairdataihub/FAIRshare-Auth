@@ -1,8 +1,8 @@
 import axios from 'axios';
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import qs from 'qs';
-// import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 
 import LottieAnimation from '@/components/lotties';
@@ -10,17 +10,22 @@ import LottieAnimation from '@/components/lotties';
 import heroLottie from '~/lotties/invalidCode.json';
 
 export default function FigshareOAuthCallback({ accessToken, refreshToken }) {
-  // const router = useRouter();
+  const router = useRouter();
 
   const copyToClipboard = (token) => {
     navigator.clipboard.writeText(token);
   };
 
   useEffect(() => {
-    /**
-     * TODO: come back to this one
-     */
-    // router.push('fairshare://githuboauth');
+    const session_id = sessionStorage.getItem('fairshare-session');
+
+    // remove session from storage - makes the session one time use only.
+    sessionStorage.removeItem('fairshare-session');
+
+    // send the link to fairshare to authenticate the user
+    router.push(
+      `fairshare://auth-fairshare?session=${session_id}&token=${accessToken}&refreshToken=${refreshToken}`,
+    );
   });
 
   return (

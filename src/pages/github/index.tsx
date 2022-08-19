@@ -1,3 +1,4 @@
+import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import React, { useEffect } from 'react';
 
@@ -5,7 +6,11 @@ import LottieAnimation from '@/components/lotties';
 
 import heroLottie from '~/lotties/connecting.json';
 
-export default function GitHubOAuth({ session }) {
+interface PageProps {
+  session: string | undefined;
+}
+
+const GitHubOAuth: React.FC<PageProps> = ({ session }) => {
   const GITHUB_OAUTH_URL = `https://github.com/login/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID}&scope=repo%20admin:repo_hook%20admin:org_hook%20user`;
 
   useEffect(() => {
@@ -41,10 +46,10 @@ export default function GitHubOAuth({ session }) {
       </main>
     </div>
   );
-}
+};
 
-export const getServerSideProps = async ({ query }) => {
-  let session = '';
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  let session: string | string[] | undefined = '';
 
   if (`session` in query) {
     session = query.session;
@@ -56,3 +61,5 @@ export const getServerSideProps = async ({ query }) => {
     },
   };
 };
+
+export default GitHubOAuth;

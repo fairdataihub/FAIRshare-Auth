@@ -26,9 +26,7 @@
     "**/*.ts",
     "**/*.tsx",
     "src/pages/github/github-oauth-callback.jsx",
-    "src/pages/figshare/callback.jsx",
-    "src/pages/github/index.jsx",
-    "src/hooks/useSessionStorage.js"
+    "src/pages/figshare/callback.jsx"
   ],
   "exclude": ["node_modules"],
   "moduleResolution": ["node_modules", ".next", "node"]
