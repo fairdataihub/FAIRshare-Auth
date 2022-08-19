@@ -28,7 +28,11 @@ export default function Index() {
           FAIRshare Authentication Platform
         </h1>
 
-        <div className="my-5 hidden space-x-2">
+        <div
+          className={`my-5 space-x-2 ${
+            process.env.NODE_ENV === `development` ? 'flex' : 'hidden'
+          }`}
+        >
           <Link href="/github">
             <a className="rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700">
               GitHub OAuth
