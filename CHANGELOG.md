@@ -1,10 +1,9 @@
 ## [1.2.1](https://github.com/fairdataihub/FAIRshare-Auth/compare/v1.2.0...v1.2.1) (2022-08-26)
 
-
 ### Bug Fixes
 
-* 🐛 enable figshare protocol call ([cca542c](https://github.com/fairdataihub/FAIRshare-Auth/commit/cca542cb4258805fad7fc5884dc5597954f9e15c))
-* 🐛 remove test access token ([1c77eee](https://github.com/fairdataihub/FAIRshare-Auth/commit/1c77eeeeba2857fcf15f1c5a98606b2f17aaa2e9))
+- 🐛 enable figshare protocol call ([cca542c](https://github.com/fairdataihub/FAIRshare-Auth/commit/cca542cb4258805fad7fc5884dc5597954f9e15c))
+- 🐛 remove test access token ([1c77eee](https://github.com/fairdataihub/FAIRshare-Auth/commit/1c77eeeeba2857fcf15f1c5a98606b2f17aaa2e9))
 
 # [1.2.0](https://github.com/fairdataihub/FAIRshare-Auth/compare/v1.1.0...v1.2.0) (2022-08-19)
 
