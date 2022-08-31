@@ -1,9 +1,8 @@
 ## [1.2.2](https://github.com/fairdataihub/FAIRshare-Auth/compare/v1.2.1...v1.2.2) (2022-08-30)
 
-
 ### Bug Fixes
 
-* 🐛 update retry url for github ([832094c](https://github.com/fairdataihub/FAIRshare-Auth/commit/832094cd98d11af6e2e8447a1f6bea81ff6e3daa))
+- 🐛 update retry url for github ([832094c](https://github.com/fairdataihub/FAIRshare-Auth/commit/832094cd98d11af6e2e8447a1f6bea81ff6e3daa))
 
 ## [1.2.1](https://github.com/fairdataihub/FAIRshare-Auth/compare/v1.2.0...v1.2.1) (2022-08-26)
 
