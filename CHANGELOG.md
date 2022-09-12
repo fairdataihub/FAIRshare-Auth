@@ -1,9 +1,8 @@
 ## [1.2.3](https://github.com/fairdataihub/FAIRshare-Auth/compare/v1.2.2...v1.2.3) (2022-09-12)
 
-
 ### Bug Fixes
 
-* **deps:** pin dependencies ([#16](https://github.com/fairdataihub/FAIRshare-Auth/issues/16)) ([967b51e](https://github.com/fairdataihub/FAIRshare-Auth/commit/967b51e45db533da3fcf5f1c0bed3f9e5133279b))
+- **deps:** pin dependencies ([#16](https://github.com/fairdataihub/FAIRshare-Auth/issues/16)) ([967b51e](https://github.com/fairdataihub/FAIRshare-Auth/commit/967b51e45db533da3fcf5f1c0bed3f9e5133279b))
 
 ## [1.2.2](https://github.com/fairdataihub/FAIRshare-Auth/compare/v1.2.1...v1.2.2) (2022-08-30)
 
