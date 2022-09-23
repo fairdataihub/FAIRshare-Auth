@@ -107,7 +107,11 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
           return `error`;
         }
       })
-      .catch((_err) => `error`);
+      .catch((err) => {
+        // eslint-disable-next-line no-console
+        console.error(err);
+        return `error`;
+      });
   } else {
     GitHubToken = `error`;
   }
