@@ -78,7 +78,7 @@ const GitHubOAuthCallback: React.FC<PageProps> = ({
                 Something went wrong!
               </h1>
 
-              <span className="text-sm text-gray-50">{errorMessage}</span>
+              <pre className="text-sm text-gray-50">{errorMessage}</pre>
 
               <Link href="/github">
                 <span className="cursor-pointer text-blue-600 underline visited:text-purple-600 hover:text-blue-800">
@@ -112,11 +112,12 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
         if (res !== undefined && `data` in res && `access_token` in res.data) {
           return res.data[`access_token`];
         } else {
+          errorMessage = res.data;
           return `error`;
         }
       })
       .catch((err) => {
-        errorMessage = err.message;
+        errorMessage = err;
         return `error`;
       });
   } else {
