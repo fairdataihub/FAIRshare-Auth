@@ -12,13 +12,9 @@ import heroLottie from '~/lotties/invalidCode.json';
 
 interface PageProps {
   GitHubToken: string;
-  errorMessage?: string;
 }
 
-const GitHubOAuthCallback: React.FC<PageProps> = ({
-  GitHubToken,
-  errorMessage,
-}) => {
+const GitHubOAuthCallback: React.FC<PageProps> = ({ GitHubToken }) => {
   const router = useRouter();
 
   useEffect(() => {
@@ -78,8 +74,6 @@ const GitHubOAuthCallback: React.FC<PageProps> = ({
                 Something went wrong!
               </h1>
 
-              <pre className="text-sm text-gray-50">{errorMessage}</pre>
-
               <Link href="/github">
                 <span className="cursor-pointer text-blue-600 underline visited:text-purple-600 hover:text-blue-800">
                   Try authentication again
@@ -95,7 +89,6 @@ const GitHubOAuthCallback: React.FC<PageProps> = ({
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   let GitHubToken;
-  let errorMessage;
 
   if (`code` in query) {
     const body = {
@@ -112,22 +105,22 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
         if (res !== undefined && `data` in res && `access_token` in res.data) {
           return res.data[`access_token`];
         } else {
-          errorMessage = res;
+          console.log(res);
           return `error`;
         }
       })
-      .catch((err) => {
-        errorMessage = err;
+      .catch((_err) => {
+        console.log(_err);
         return `error`;
       });
   } else {
+    console.log(`No code in query`);
     GitHubToken = `error`;
   }
 
   return {
     props: {
       GitHubToken,
-      errorMessage,
     },
   };
 };
