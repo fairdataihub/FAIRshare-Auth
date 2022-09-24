@@ -95,7 +95,7 @@ const GitHubOAuthCallback: React.FC<PageProps> = ({
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   let GitHubToken;
-  let errorMessage = '';
+  let errorMessage;
 
   if (`code` in query) {
     const body = {
@@ -112,7 +112,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
         if (res !== undefined && `data` in res && `access_token` in res.data) {
           return res.data[`access_token`];
         } else {
-          errorMessage = res.data;
+          errorMessage = res;
           return `error`;
         }
       })
