@@ -1,3 +1,11 @@
+## [1.2.5](https://github.com/fairdataihub/FAIRshare-Auth/compare/v1.2.4...v1.2.5) (2023-01-13)
+
+
+### Bug Fixes
+
+* **deps:** update dependency axios to v1.2.2 ([#57](https://github.com/fairdataihub/FAIRshare-Auth/issues/57)) ([ce79732](https://github.com/fairdataihub/FAIRshare-Auth/commit/ce79732a8a6105f5e65576e70079f89355a9985f))
+* **deps:** update dependency react-toastify to v9.1.1 ([#59](https://github.com/fairdataihub/FAIRshare-Auth/issues/59)) ([aa89ef3](https://github.com/fairdataihub/FAIRshare-Auth/commit/aa89ef317a62edd95f962717f4dfa5a393880ed4))
+
 ## [1.2.4](https://github.com/fairdataihub/FAIRshare-Auth/compare/v1.2.3...v1.2.4) (2022-10-10)
 
 ### Bug Fixes
