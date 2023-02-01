@@ -1,3 +1,15 @@
+## [1.2.6](https://github.com/fairdataihub/FAIRshare-Auth/compare/v1.2.5...v1.2.6) (2023-02-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency axios to v1.2.3 ([#70](https://github.com/fairdataihub/FAIRshare-Auth/issues/70)) ([093a77d](https://github.com/fairdataihub/FAIRshare-Auth/commit/093a77d3c88cfae8248947188dbf2fc155fcdf04))
+* **deps:** update dependency axios to v1.2.4 ([#80](https://github.com/fairdataihub/FAIRshare-Auth/issues/80)) ([1310b0e](https://github.com/fairdataihub/FAIRshare-Auth/commit/1310b0e42d8b69dfa2155349ea9f64ddb3a58202))
+* **deps:** update dependency axios to v1.2.5 ([#81](https://github.com/fairdataihub/FAIRshare-Auth/issues/81)) ([e09dc2a](https://github.com/fairdataihub/FAIRshare-Auth/commit/e09dc2aba3ec59de34a7888fe5015346bf7d64ad))
+* **deps:** update dependency axios to v1.2.6 ([#82](https://github.com/fairdataihub/FAIRshare-Auth/issues/82)) ([142b243](https://github.com/fairdataihub/FAIRshare-Auth/commit/142b2431ce9ce4b7183ed5f45104d22ed28fccef))
+* **deps:** update dependency axios to v1.3.0 ([#86](https://github.com/fairdataihub/FAIRshare-Auth/issues/86)) ([d4c4fe7](https://github.com/fairdataihub/FAIRshare-Auth/commit/d4c4fe79dd14e44198d9d21fddc0615f6f417d77))
+* **deps:** update dependency react-lottie-player to v1.5.4 ([#58](https://github.com/fairdataihub/FAIRshare-Auth/issues/58)) ([abc129d](https://github.com/fairdataihub/FAIRshare-Auth/commit/abc129d9a01524fba80a856268a7e72dc8a0a652))
+
 ## [1.2.5](https://github.com/fairdataihub/FAIRshare-Auth/compare/v1.2.4...v1.2.5) (2023-01-13)
 
 
