@@ -1,3 +1,10 @@
+## [1.2.11](https://github.com/fairdataihub/FAIRshare-Auth/compare/v1.2.10...v1.2.11) (2023-03-12)
+
+
+### Bug Fixes
+
+* **deps:** update dependency qs to v6.11.1 ([#122](https://github.com/fairdataihub/FAIRshare-Auth/issues/122)) ([d1c6f4d](https://github.com/fairdataihub/FAIRshare-Auth/commit/d1c6f4de9c56326ff03346c61af0ff5fa5ea41db))
+
 ## [1.2.10](https://github.com/fairdataihub/FAIRshare-Auth/compare/v1.2.9...v1.2.10) (2023-02-27)
 
 
