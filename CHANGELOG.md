@@ -1,3 +1,10 @@
+## [1.2.13](https://github.com/fairdataihub/FAIRshare-Auth/compare/v1.2.12...v1.2.13) (2023-04-09)
+
+
+### Bug Fixes
+
+* **deps:** update dependency axios to v1.3.5 ([#164](https://github.com/fairdataihub/FAIRshare-Auth/issues/164)) ([2d5afb5](https://github.com/fairdataihub/FAIRshare-Auth/commit/2d5afb5b367ee2525987269a7cef1709ae858c4b))
+
 ## [1.2.12](https://github.com/fairdataihub/FAIRshare-Auth/compare/v1.2.11...v1.2.12) (2023-03-28)
 
 
