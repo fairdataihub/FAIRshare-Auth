@@ -1,3 +1,10 @@
+## [1.2.16](https://github.com/fairdataihub/FAIRshare-Auth/compare/v1.2.15...v1.2.16) (2023-05-18)
+
+
+### Bug Fixes
+
+* **deps:** update dependency react-toastify to v9.1.3 ([#208](https://github.com/fairdataihub/FAIRshare-Auth/issues/208)) ([417864b](https://github.com/fairdataihub/FAIRshare-Auth/commit/417864bf75a6365da34afedb0e2f1c173e8e92bb))
+
 ## [1.2.15](https://github.com/fairdataihub/FAIRshare-Auth/compare/v1.2.14...v1.2.15) (2023-04-29)
 
 
