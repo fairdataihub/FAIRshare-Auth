@@ -47,7 +47,7 @@
     "@semantic-release/github": "9.0.4",
     "@semantic-release/npm": "10.0.5",
     "@semantic-release/release-notes-generator": "11.0.4",
-    "@tailwindcss/forms": "0.5.4",
+    "@tailwindcss/forms": "0.5.5",
     "@types/cors": "2.8.13",
     "@types/node": "18.17.7",
     "@types/react": "18.2.20",
