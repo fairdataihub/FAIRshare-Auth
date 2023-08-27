@@ -1,3 +1,10 @@
+## [1.2.18](https://github.com/fairdataihub/FAIRshare-Auth/compare/v1.2.17...v1.2.18) (2023-08-27)
+
+
+### Bug Fixes
+
+* **deps:** update dependency react-lottie-player to v1.5.5 ([#312](https://github.com/fairdataihub/FAIRshare-Auth/issues/312)) ([675e067](https://github.com/fairdataihub/FAIRshare-Auth/commit/675e06756d182a04fc55742ccdaf78698540f52f))
+
 ## [1.2.17](https://github.com/fairdataihub/FAIRshare-Auth/compare/v1.2.16...v1.2.17) (2023-05-18)
 
 
